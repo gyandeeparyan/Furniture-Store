@@ -1,35 +1,38 @@
-import React from 'react'
-import styled from 'styled-components'
-import { PageHero } from '../components'
-import aboutImg from '../assets/hero-bcg.jpeg'
+import React from "react";
+import styled from "styled-components";
+import { PageHero } from "../components";
+;
+
 const AboutPage = () => {
   return (
     <main>
       <PageHero title='about' />
       <Wrapper className='page section section-center'>
-        <img src={aboutImg} alt='nice desk' />
+        <img src='https://i.ibb.co/NtZwc0V/hero-bcg.jpg' alt='nice desk' />
         <article>
           <div className='title'>
             <h2>our story</h2>
             <div className='underline'></div>
           </div>
           <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat
-            accusantium sapiente tempora sed dolore esse deserunt eaque
-            excepturi, delectus error accusamus vel eligendi, omnis beatae.
-            Quisquam, dicta. Eos quod quisquam esse recusandae vitae neque
-            dolore, obcaecati incidunt sequi blanditiis est exercitationem
-            molestiae delectus saepe odio eligendi modi porro eaque in libero
-            minus unde sapiente consectetur architecto. Ullam rerum, nemo iste
-            ex, eaque perspiciatis nisi, eum totam velit saepe sed quos
-            similique amet. Ex, voluptate accusamus nesciunt totam vitae esse
-            iste.
+            Welcome to our online furniture store! We are a team of dedicated
+            individuals who are committed to providing our customers with
+            high-quality, stylish furniture at affordable prices. We believe
+            that everyone deserves to have a comfortable and beautiful home,
+            which is why we offer a wide range of furniture pieces to suit all
+            styles and budgets. Our team carefully selects each item in our
+            store to ensure that it meets our high standards for quality,
+            durability, and design. We pride ourselves on our excellent customer
+            service and offer free shipping and easy returns to ensure that our
+            customers are completely satisfied with their purchase. Thank you
+            for choosing our online furniture store, and we look forward to
+            helping you create the home of your dreams!
           </p>
         </article>
       </Wrapper>
     </main>
-  )
-}
+  );
+};
 const Wrapper = styled.section`
   display: grid;
   gap: 4rem;
@@ -56,5 +59,5 @@ const Wrapper = styled.section`
   @media (min-width: 992px) {
     grid-template-columns: 1fr 1fr;
   }
-`
-export default AboutPage
+`;
+export default AboutPage;

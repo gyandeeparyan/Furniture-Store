@@ -7,6 +7,7 @@ import ErrorPage from './pages/ErrorPage';
 import SingleProductPage from './pages/SingleProductPage'
 import ProductsPage from './pages/ProductsPage'
 import CartPage from './pages/CartPage';
+import CheckoutPage from './pages/CheckoutPage'
 
 function App() {
   return <BrowserRouter>
@@ -19,6 +20,7 @@ function App() {
           <Route path='cart' element={<CartPage />} />
           <Route path='products/:id' element={<SingleProductPage />} />
           <Route path='products' element={<ProductsPage />} />
+          <Route path='checkout' element={<CheckoutPage/>}/>
           <Route path='*' element={<ErrorPage />} />
         </Routes>
 

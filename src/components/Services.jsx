@@ -1,6 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
-import { services } from '../utils/constants'
+import React from "react";
+import styled from "styled-components";
+import { services } from "../utils/constants";
 const Services = () => {
   return (
     <Wrapper>
@@ -10,27 +10,29 @@ const Services = () => {
             Custom Furniture <br /> built only for you
           </h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-            dolorum debitis consectetur reprehenderit non aliquam voluptates
-            dolore aut vero consequuntur.
+            Design your dream furniture with us. From unique and personalized
+            pieces to custom-built solutions, we can bring your vision to life.
+            Our skilled craftsmen use only the finest materials to create
+            furniture that is both beautiful and functional. Contact us now to
+            start your custom furniture journey.
           </p>
         </article>
         <div className='services-center'>
           {services.map((service) => {
-            const { id, icon, title, text } = service
+            const { id, icon, title, text } = service;
             return (
               <article className='service' key={id}>
                 <span className='icon'>{icon}</span>
                 <h4>{title}</h4>
                 <p>{text}</p>
               </article>
-            )
+            );
           })}
         </div>
       </div>
     </Wrapper>
-  )
-}
+  );
+};
 
 const Wrapper = styled.section`
   h3,
@@ -94,5 +96,5 @@ const Wrapper = styled.section`
       transform: translateY(5rem);
     }
   }
-`
-export default Services
+`;
+export default Services;
