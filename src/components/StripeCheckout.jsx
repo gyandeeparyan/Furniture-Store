@@ -71,14 +71,14 @@ const CheckoutForm = () => {
   };
   const handleSubmit = () => {
   
-     {clearCart();
+     {
       setError(null);
       setProcessing(false);
       setSucceeded(true);
       setTimeout(() => {
-        
+        clearCart();
         navigate('/');
-      }, 10000);
+      }, 2000);
     }
   };
   return (
