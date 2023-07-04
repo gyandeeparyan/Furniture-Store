@@ -32,7 +32,7 @@ export const CartProvider = ({ children }) => {
   const addToCart = (id, color, amount, product) => {
     if ("vibrate" in navigator) {
       // vibration API supported
-      navigator.vibrate(400);
+      navigator.vibrate(100);
     }
     dispatch({ type: ADD_TO_CART, payload: { id, color, amount, product } });
   };
