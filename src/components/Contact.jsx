@@ -60,6 +60,7 @@ const Wrapper = styled.section`
   .submit-btn {
     border-top-right-radius: var(--radius);
     border-bottom-right-radius: var(--radius);
+    color:white;
   }
   .form-input::placeholder {
     color: var(--clr-black);
@@ -71,7 +72,7 @@ const Wrapper = styled.section`
     letter-spacing: var(--spacing);
     cursor: pointer;
     transition: var(--transition);
-    color: var(--clr-black);
+   
   }
   .submit-btn:hover {
     color: var(--clr-white);
