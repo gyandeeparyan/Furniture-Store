@@ -21,9 +21,8 @@ const Hero = () => {
         </Link>
       </article>
       <article className='img-container'>
-        <img src='https://i.ibb.co/NtZwc0V/hero-bcg.jpg' alt='nice table' className='main-img' />
-        <img src='https://i.ibb.co/dkQw1xB/hero-bcg-2.jpg' alt='person working' className='accent-img' />
-      </article>
+        <img src='https://i.ibb.co/dGKtG1Z/a01d26e6-9b99-403a-aa77-f42ff92cb5ad.jpg' alt='nice table' className='main-img' />
+        </article>
     </Wrapper>
   );
 };
@@ -82,7 +81,7 @@ const Wrapper = styled.section`
       position: absolute;
       width: 10%;
       height: 80%;
-      background: var(--clr-primary-9);
+      
       bottom: 0%;
       left: -8%;
       border-radius: var(--radius);
