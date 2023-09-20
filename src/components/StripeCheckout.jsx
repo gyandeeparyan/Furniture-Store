@@ -15,7 +15,7 @@ import { useNavigate } from 'react-router-dom';
 import { Alert ,AlertTitle } from '@mui/material';
 
 
-const promise = loadStripe("pk_test_51N0nwLSBPF6nQ6scWGN7plBTOYZdA2wliPAK0hXpEafBUVMQAnU4iKhO1MCbcfxmJOcJHV6Ns3QIQi0FbAnbjae600sed5d5ke");
+const promise = loadStripe(import.meta.env.VITE_STRIPE_KEY);
 
 const CheckoutForm = () => {
   const { cart, total_amount, shipping_fee, clearCart } = useCartContext();
