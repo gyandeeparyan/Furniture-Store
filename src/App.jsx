@@ -21,10 +21,10 @@ import PrivateRoute from "./pages/PrivateRoute";
 
 
 function App() {
-  const notify = () => toast("Wow so easy !");
+
   return (
     <BrowserRouter>
-      <button onClick={notify}>Notify !</button>
+     
       <ToastContainer />
       <Navbar />
       <Sidebar />
