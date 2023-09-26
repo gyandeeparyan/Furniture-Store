@@ -1,15 +1,22 @@
-import React from 'react'
-import styled from 'styled-components'
-import { useCartContext } from '../context/cart_context'
-import { useUserContext } from '../context/user_context'
-import { formatPrice } from '../utils/helpers'
-import { Link } from 'react-router-dom'
+import React from "react";
+import styled from "styled-components";
+import { useCartContext } from "../context/cart_context";
+
+import { formatPrice } from "../utils/helpers";
+import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useUserContext } from "../context/user_context";
+
 const CartTotals = () => {
-  const { total_amount, shipping_fee } = useCartContext()
+  const { user } = useAuth0();
+
+  const { loginWithRedirect, myUser, logout } = useUserContext();
+  const { total_amount, shipping_fee } = useCartContext();
   
   return (
     <Wrapper>
       <div>
+      
         <article>
           <h5>
             subtotal :<span>{formatPrice(total_amount)}</span>
@@ -22,15 +29,24 @@ const CartTotals = () => {
             order total :<span>{formatPrice(total_amount + shipping_fee)}</span>
           </h4>
         </article>
-      
-          <Link to='/checkout' className='btn'>
-            proceed to checkout
-          </Link>
-       
+
+        <Link to='/checkout'>
+          <button
+            className='btn'
+            onClick={() => {
+              if (!user) {
+                loginWithRedirect();
+                
+                
+              }
+            }}>
+            {user ? "checkout" : "login to checkout"}
+          </button>
+        </Link>
       </div>
     </Wrapper>
-  )
-}
+  );
+};
 
 const Wrapper = styled.section`
   margin-top: 3rem;
@@ -62,6 +78,6 @@ const Wrapper = styled.section`
     text-align: center;
     font-weight: 700;
   }
-`
+`;
 
-export default CartTotals
+export default CartTotals;

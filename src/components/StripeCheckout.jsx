@@ -1,38 +1,49 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import { loadStripe } from '@stripe/stripe-js';
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+import { loadStripe } from "@stripe/stripe-js";
 import {
   CardElement,
   useStripe,
   Elements,
   useElements,
-} from '@stripe/react-stripe-js';
-import axios from 'axios';
-import { useCartContext } from '../context/cart_context';
-import { useUserContext } from '../context/user_context';
-import { formatPrice } from '../utils/helpers';
-import { useNavigate } from 'react-router-dom';
-import { Alert ,AlertTitle } from '@mui/material';
+} from "@stripe/react-stripe-js";
+import axios from "axios";
+import { useCartContext } from "../context/cart_context";
+import { useUserContext } from "../context/user_context";
+import { formatPrice } from "../utils/helpers";
+import { useNavigate } from "react-router-dom";
 
-
+import { ToastContainer, toast } from "react-toastify";
 const promise = loadStripe(import.meta.env.VITE_STRIPE_KEY);
 
 const CheckoutForm = () => {
   const { cart, total_amount, shipping_fee, clearCart } = useCartContext();
   const { myUser } = useUserContext();
   const navigate = useNavigate();
+
   const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState(null);
-  const [processing, setProcessing] = useState('');
+  const [processing, setProcessing] = useState("");
   const [disabled, setDisabled] = useState(true);
-  const [clientSecret, setClientSecret] = useState('');
+  const [clientSecret, setClientSecret] = useState("");
   const stripe = useStripe();
   const elements = useElements();
+  const notify = () =>
+    toast.success("Order Placed!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
 
   const createPaymentIntent = async () => {
     try {
       const { data } = await axios.post(
-        '/.netlify/functions/create-payment-intent',
+        "/.netlify/functions/create-payment-intent",
 
         JSON.stringify({ cart, shipping_fee, total_amount })
       );
@@ -49,17 +60,17 @@ const CheckoutForm = () => {
   const cardStyle = {
     style: {
       base: {
-        color: '#32325d',
-        fontFamily: 'Arial, sans-serif',
-        fontSmoothing: 'antialiased',
-        fontSize: '16px',
-        '::placeholder': {
-          color: '#32325d',
+        color: "#32325d",
+        fontFamily: "Arial, sans-serif",
+        fontSmoothing: "antialiased",
+        fontSize: "16px",
+        "::placeholder": {
+          color: "#32325d",
         },
       },
       invalid: {
-        color: '#fa755a',
-        iconColor: '#fa755a',
+        color: "#fa755a",
+        iconColor: "#fa755a",
       },
     },
   };
@@ -67,23 +78,34 @@ const CheckoutForm = () => {
     // Listen for changes in the CardElement
     // and display any errors as the customer types their card details
     setDisabled(event.empty);
-    setError(event.error ? event.error.message : '');
+    setError(event.error ? event.error.message : "");
   };
   const handleSubmit = () => {
-  
-     { clearCart()
-      
+    {
+      clearCart();
+
       setError(null);
       setProcessing(false);
       setSucceeded(true);
-      setTimeout(() => {
-        
-        navigate('/');
-      }, 2000);
+
+      notify();
+      navigate("/");
     }
   };
   return (
     <div>
+      <ToastContainer
+        position='top-right'
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme='colored'
+      />
       {succeeded ? (
         <article>
           <h4>Thank you</h4>
@@ -105,7 +127,7 @@ const CheckoutForm = () => {
         />
         <button disabled={processing || disabled || succeeded} id='submit'>
           <span id='button-text'>
-            {processing ? <div className='spinner' id='spinner'></div> : 'Pay'}
+            {processing ? <div className='spinner' id='spinner'></div> : "Pay"}
           </span>
         </button>
         {/* Show any error that happens when processing the payment */}
@@ -115,12 +137,12 @@ const CheckoutForm = () => {
           </div>
         )}
         {/* Show a success message upon completion */}
-        <p className={succeeded ? 'result-message' : 'result-message hidden'}>
+        <p className={succeeded ? "result-message" : "result-message hidden"}>
           Payment succeeded, see the result in your
           <a href={`https://dashboard.stripe.com/test/payments`}>
-            {' '}
+            {" "}
             Stripe dashboard.
-          </a>{' '}
+          </a>{" "}
           Refresh the page to pay again.
         </p>
       </form>
@@ -235,7 +257,7 @@ const Wrapper = styled.section`
   .spinner:before,
   .spinner:after {
     position: absolute;
-    content: '';
+    content: "";
   }
   .spinner:before {
     width: 10.4px;
